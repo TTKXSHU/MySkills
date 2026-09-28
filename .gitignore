@@ -1,0 +1,48 @@
+# ---- 操作系统 ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# ---- 编辑器 / IDE ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# ---- Node ----
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ---- 构建产物 ----
+dist/
+build/
+*.log
+
+# ---- 敏感信息（切勿提交） ----
+.env
+.env.*
+*.pem
+*.key
+secrets/
+credentials.json
+token.json
+
+# ---- 本地临时 ----
+*.tmp
+*.bak
+.cache/

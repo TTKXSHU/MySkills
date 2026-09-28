@@ -1,0 +1,38 @@
+# 统一换行符处理，避免跨平台协作时产生无意义的 diff
+
+# 默认：文本文件入库统一为 LF，检出时按平台自动转换
+* text=auto eol=lf
+
+# 明确按文本处理的文件类型
+*.md      text eol=lf
+*.txt     text eol=lf
+*.json    text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf
+*.xml     text eol=lf
+*.xsd     text eol=lf
+*.dot     text eol=lf
+*.py      text eol=lf
+*.js      text eol=lf
+*.mjs     text eol=lf
+*.cjs     text eol=lf
+*.ts      text eol=lf
+*.sh      text eol=lf
+*.ps1     text eol=crlf
+
+# 二进制文件，不做任何转换
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.pdf     binary
+*.docx    binary
+*.pptx    binary
+*.xlsx    binary
+
+# 让 GitHub 语言统计不把 vendored 代码算入
+02-engineering/cad/scripts/packages/**  linguist-vendored
+02-engineering/dxf/scripts/packages/**  linguist-vendored
+01-documents/docx/scripts/office/schemas/**  linguist-vendored
+01-documents/pptx/scripts/office/schemas/**  linguist-vendored
