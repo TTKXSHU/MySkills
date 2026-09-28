@@ -50,6 +50,13 @@
       "env": {
         "STM32_DATA_DIR": "<YOUR_DRIVE>:/stm32-data-generated"
       }
+    },
+    "kicad": {
+      "type": "stdio",
+      "command": "<YOUR_DRIVE>:/Tools/mcp/kicad-mcp/.venv/Scripts/python.exe",
+      "args": ["<YOUR_DRIVE>:/Tools/mcp/kicad-mcp/main.py"],
+      "env": {}
     }
   }
 }
+

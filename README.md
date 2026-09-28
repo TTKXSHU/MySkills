@@ -2,7 +2,7 @@
 
 [![Private](https://img.shields.io/badge/repo-private-red)](#)
 [![Skills](https://img.shields.io/badge/skills-36-blue)](#-技能总览)
-[![MCP](https://img.shields.io/badge/mcp%20servers-9-purple)](#-mcp-服务器-08-mcp)
+[![MCP](https://img.shields.io/badge/mcp%20servers-10-purple)](#-mcp-服务器-08-mcp)
 [![Size](https://img.shields.io/badge/size-9.0MB-lightgrey)](#)
 
 > 个人 AI Agent 技能（Skills）集中仓库。兼容 **Claude Code / cc-switch / Codex / Gemini CLI / PI-Desktop** 等支持 `SKILL.md` 规范的 Agent。
@@ -11,7 +11,7 @@
 
 ## 📖 这个仓库是什么
 
-存放我本人使用和整理的 **36 个 Agent Skill** 与 **9 个 MCP 服务器配置**。每个 skill 是一个独立目录，内含一份 `SKILL.md`（技能定义，YAML front matter + Markdown 指令），部分 skill 还带有 `scripts/`、`references/` 等辅助文件。
+存放我本人使用和整理的 **36 个 Agent Skill** 与 **10 个 MCP 服务器配置**。每个 skill 是一个独立目录，内含一份 `SKILL.md`（技能定义，YAML front matter + Markdown 指令），部分 skill 还带有 `scripts/`、`references/` 等辅助文件。
 
 **目录分类规则**：按**用途领域**分成 8 个大类（7 类 skill + 1 类 MCP），类名前缀 `01-` ~ `08-` 保证排序稳定、方便查找。
 
@@ -74,7 +74,7 @@ MySkills/
         └── mcp-server.js 等 24 个文件
 ```
 
-**统计**：8 个分类 · 36 个 skill · 9 个 MCP server · 453 个文件 · 约 9.0 MB
+**统计**：8 个分类 · 36 个 skill · 10 个 MCP server · 约 9.0 MB
 
 ---
 
@@ -154,7 +154,7 @@ MySkills/
 
 ## 🔌 MCP 服务器（08-mcp）
 
-除 skill 外，本仓库还收录我使用的 **9 个 MCP（Model Context Protocol）服务器配置**，以及一个自制的 STM32 调试工具套件。
+除 skill 外，本仓库还收录我使用的 **10 个 MCP（Model Context Protocol）服务器配置**，以及一个自制的 STM32 调试工具套件。
 
 详见 **[08-mcp/README.md](08-mcp/README.md)**
 
@@ -184,6 +184,7 @@ MySkills/
 | `easyeda-mcp-pro` | 立创EDA（PCB/原理图） | 开发 |
 | `stm32-tools` | **自制**：编译/烧录/串口/寄存器 | 开发 |
 | `stm32-data` | STM32 寄存器查询 | 开发 |
+| `kicad` | KiCad EDA：网表/BOM/DRC | 开发 |
 
 ### ⭐ 想要更多 MCP？
 

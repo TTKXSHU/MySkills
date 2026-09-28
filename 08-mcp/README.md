@@ -1,6 +1,6 @@
 # 08-mcp — MCP 服务器配置与工具
 
-本目录收录我使用的 **MCP（Model Context Protocol）服务器配置**，以及一个自制的 STM32 调试工具套件。
+本目录收录我使用的 **MCP（Model Context Protocol）服务器配置**（10 个），以及一个自制的 STM32 调试工具套件。
 
 ---
 
@@ -24,7 +24,7 @@
 
 ---
 
-## 🔌 MCP 服务器清单（9 个）
+## 🔌 MCP 服务器清单（10 个）
 
 ### 通用能力
 
@@ -44,6 +44,7 @@
 | `easyeda-mcp-pro` | stdio | `npx -y easyeda-mcp-pro@latest` | 立创EDA 专业版（PCB/原理图） |
 | `stm32-tools` | stdio | `node ~/.claude/tools/mcp-server.js` | **自制**：STM32 编译/烧录/串口/寄存器/变量监视 |
 | `stm32-data` | stdio | `stm32-data-mcp` | STM32 寄存器与数据手册查询 |
+| `kicad` | stdio | `.venv/Scripts/python.exe main.py` | **KiCad EDA**：原理图/PCB 分析、网表提取、BOM、DRC（需装 KiCad 9.0+） |
 
 ### 项目级（示例）
 
@@ -139,6 +140,79 @@ npm install
 | `tools.bat` | 工具总入口 |
 
 详见 [stm32-tools/README.md](stm32-tools/README.md) 与 [stm32-tools/CLOSED_LOOP.md](stm32-tools/CLOSED_LOOP.md)。
+
+---
+
+## 🔧 kicad — KiCad EDA 集成
+
+基于 [lamaalrajih/kicad-mcp](https://github.com/lamaalrajih/kicad-mcp)（MIT，525★）。
+让 AI 直接分析 KiCad 工程：网表提取、BOM、DRC、元件连接关系。
+
+### ⚠️ 前置条件：必须先装 KiCad
+
+本 MCP 是 **"KiCad 的遥控器"**，调用 KiCad CLI/API 来读写工程文件。
+**没装 KiCad 本体，本 MCP 无法工作。**
+
+| 依赖 | 要求 | 本机状态 |
+|---|---|---|
+| KiCad | 9.0+ | ❌ **未安装，需自行安装** |
+| Python | 3.10+ | ✅ 3.10.20（venv 内） |
+| uv | 0.8+ | ✅ 0.11.32 |
+
+KiCad 下载：https://www.kicad.org/download/windows/
+
+### 已完成的安装步骤
+
+```powershell
+# 1. 克隆（已做）
+mkdir D:\Tools\mcp; cd D:\Tools\mcp
+git clone --depth 1 https://github.com/lamaalrajih/kicad-mcp.git
+
+# 2. 创建 venv 并装依赖（已做）
+cd kicad-mcp
+uv sync
+
+# 3. 配置 ~/.claude.json 的 mcpServers（已做）
+```
+
+### 当前配置
+
+```json
+"kicad": {
+  "type": "stdio",
+  "command": "D:/Tools/mcp/kicad-mcp/.venv/Scripts/python.exe",
+  "args": ["D:/Tools/mcp/kicad-mcp/main.py"],
+  "env": {}
+}
+```
+
+### 实测结果（无需 KiCad 即可验证的部分已通过）
+
+| 检查 | 结果 |
+|---|---|
+| venv 创建 | ✅ Python 3.10.20 |
+| 依赖安装 | ✅ mcp / fastmcp / pandas / pyyaml / defusedxml |
+| 服务器启动 | ✅ serverInfo `{name: KiCad, version: 1.11.0}` |
+| MCP 握手 | ✅ protocolVersion 2024-11-05 |
+| 能力 | ✅ tools / resources / prompts / experimental |
+| **工具数量** | ✅ **16 个** |
+
+**16 个工具**：`list_projects`、`get_project_structure`、`open_project`、`validate_project`、
+`generate_pcb_thumbnail`、`generate_project_thumbnail`、`get_drc_history_tool`、`run_drc_check`、
+`analyze_bom`、`export_bom_csv`、`extract_schematic_netlist`、`extract_project_netlist`、
+`analyze_schematic_connections`、`find_component_connections`、`identify_circuit_patterns` + 1
+
+### 装完 KiCad 后要做的
+
+1. 把 KiCad 的 `bin` 目录加入 PATH（让 `kicad-cli` 可用）
+   ```
+   C:\Program Files\KiCad\9.0\bin
+   ```
+2. 可选：在 `D:\Tools\mcp\kicad-mcp\.env` 指定工程搜索路径
+   ```
+   KICAD_SEARCH_PATHS=D:/PCB,D:/Electronics
+   ```
+3. 重启客户端，即可让 AI 操作 KiCad 工程
 
 ---
 
