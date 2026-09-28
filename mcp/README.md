@@ -1,29 +1,44 @@
-# 08-mcp — MCP 服务器配置与工具
+# mcp — MCP 服务器配置与工具
 
 本目录收录我使用的 **MCP（Model Context Protocol）服务器配置**（10 个），以及一个自制的 STM32 调试工具套件。
 
 ---
 
-## 📁 目录内容
+## 📁 目录结构
+
+按**用途**分成 7 个子类：
 
 ```
-08-mcp/
-├── README.md                      ← 本文件
-├── RECOMMENDED.md                 ← ⭐ MCP 推荐清单（值得加装的高效率 MCP）
-├── setup-mcp.ps1                  ← 合并 MCP 配置到 ~/.claude.json 的脚本
-├── config/
-│   ├── mcp-servers.global.json    ← 全局 MCP 配置（9 个 server）
-│   └── mcp-servers.projects.json  ← 项目级 MCP 配置示例
-└── stm32-tools/                   ← 自制 STM32 调试工具套件（MCP server）
-    ├── mcp-server.js              ← MCP server 主程序
-    ├── closed-loop.js             ← 一键闭环调试
-    ├── package.json
-    ├── README.md                  ← 工具套件自己的说明
-    └── *.bat                      ← 各功能批处理入口
+mcp/
+├── 01-eda/                  ⚡ 电子设计自动化（2）
+│   ├── kicad/               ⚠️ 需先装 KiCad 9.0+
+│   └── easyeda/             立创EDA / EasyEDA Pro
+├── 02-embedded/             📟 嵌入式（2）
+│   ├── stm32-tools/         自制：编译/烧录/串口/寄存器闭环
+│   └── stm32-data/          STM32 寄存器查询
+├── 03-knowledge/            🧠 知识与会话增强（3）
+│   ├── memory/              知识图谱持久记忆
+│   ├── context7/            库/框架最新文档
+│   └── sequential-thinking/ 分步推理辅助
+├── 04-web/                  🌐 网络与浏览器（2）
+│   ├── fetch/               网页抓取转 Markdown
+│   └── browser/             浏览器自动化（项目级）
+├── 05-devops/               🔧 代码与仓库（2）
+│   ├── filesystem/          本地文件读写
+│   └── github/              GitHub 操作
+├── 06-config/               ⚙️ 配置模板与脚本
+│   ├── mcp-servers.global.json
+│   ├── mcp-servers.projects.json
+│   └── setup-mcp.ps1
+└── 07-docs/                 📚 调研文档
+    └── RECOMMENDED.md
 ```
+
+每个 MCP 目录内都有独立 `README.md`（含配置、前置条件、风险、验证状态）。
+
+> 📤 添加新 MCP 前请先读 [../SPEC.md](../SPEC.md)
 
 ---
-
 ## 🔌 MCP 服务器清单（10 个）
 
 ### 通用能力
@@ -78,7 +93,7 @@
 ### 方式二：用脚本预览
 
 ```powershell
-cd D:\MySkills\08-mcp
+cd D:\MySkills\mcp
 powershell -ExecutionPolicy Bypass -File .\setup-mcp.ps1 -WhatIf
 ```
 
@@ -115,7 +130,7 @@ powershell -ExecutionPolicy Bypass -File .\setup-mcp.ps1 -WhatIf
 
 ```powershell
 # 1. 复制工具到 .claude/tools
-Copy-Item D:\MySkills\08-mcp\stm32-tools -Destination $env:USERPROFILE\.claude\tools -Recurse -Force
+Copy-Item D:\MySkills\mcp\02-embedded\stm32-tools -Destination $env:USERPROFILE\.claude\tools -Recurse -Force
 
 # 2. 安装依赖
 cd $env:USERPROFILE\.claude\tools
@@ -139,7 +154,7 @@ npm install
 | `code_check.bat` | 代码检查 |
 | `tools.bat` | 工具总入口 |
 
-详见 [stm32-tools/README.md](stm32-tools/README.md) 与 [stm32-tools/CLOSED_LOOP.md](stm32-tools/CLOSED_LOOP.md)。
+详见 [stm32-tools/README.md](02-embedded/stm32-tools/README.md) 与 [stm32-tools/CLOSED_LOOP.md](02-embedded/stm32-tools/CLOSED_LOOP.md)。
 
 ---
 
@@ -218,7 +233,7 @@ uv sync
 
 ## ⭐ 值得加装的 MCP
 
-见 **[RECOMMENDED.md](RECOMMENDED.md)** —— 基于官方仓库与社区大全调研，挑出对
+见 **[07-docs/RECOMMENDED.md](07-docs/RECOMMENDED.md)** —— 基于官方仓库与社区大全调研，挑出对
 「嵌入式 STM32 + EDA + CAD + Agent 工作流」最有价值的 MCP，含：
 
 - 三个效率杠杆（省 token / 补上下文 / 能动手）

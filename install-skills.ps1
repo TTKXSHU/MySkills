@@ -1,9 +1,9 @@
 ﻿<#
 .SYNOPSIS
-    从本仓库安装 skills 到本地 agent 的 skills 目录（自动压平分类层级）。
+    从本仓库的 skills/ 目录安装 skill 到本地 agent 的 skills 目录（自动压平分类层级）。
 
 .DESCRIPTION
-    本仓库按分类（01-documents/ 等）组织，但 agent 通常要求 skill 直接位于
+    本仓库的 skills/ 下按分类（01-documents/ 等）组织，但 agent 通常要求 skill 直接位于
     skills/ 根目录下。此脚本会遍历所有分类目录，把每个 skill 压平复制过去。
 
 .PARAMETER Destination
@@ -35,7 +35,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$repoRoot = $PSScriptRoot
+$repoRoot = Join-Path $PSScriptRoot 'skills'
 
 Write-Host "仓库根目录: $repoRoot" -ForegroundColor Cyan
 Write-Host "目标目录  : $Destination" -ForegroundColor Cyan
@@ -46,7 +46,7 @@ $categories = Get-ChildItem $repoRoot -Directory |
     Sort-Object Name
 
 if (-not $categories) {
-    throw "未找到分类目录（应形如 01-documents）。请确认脚本位于仓库根目录。"
+    throw "未找到分类目录（应形如 skills/01-documents）。请确认脚本位于仓库根目录。"
 }
 
 if ($Only) {

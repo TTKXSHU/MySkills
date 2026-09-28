@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 从本仓库安装 skills 到本地 agent 的 skills 目录（自动压平分类层级）。
+# 从本仓库的 skills/ 目录安装 skill 到本地 agent 的 skills 目录（自动压平分类层级）。
 #
 # 用法：
 #   ./install-skills.sh                          # 安装全部到 ~/.claude/skills
@@ -25,7 +25,7 @@ while getopts "d:c:fn" opt; do
   esac
 done
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/skills"
 echo "仓库根目录: $REPO_ROOT"
 echo "目标目录  : $DEST"
 
@@ -39,7 +39,7 @@ else
   mapfile -t DIRS < <(find "$REPO_ROOT" -maxdepth 1 -type d -name '[0-9][0-9]-*' | sort)
 fi
 
-[ ${#DIRS[@]} -eq 0 ] && { echo "未找到分类目录（应形如 01-documents）" >&2; exit 1; }
+[ ${#DIRS[@]} -eq 0 ] && { echo "未找到分类目录（应形如 skills/01-documents）" >&2; exit 1; }
 
 [ -d "$DEST" ] || { [ $DRYRUN -eq 1 ] || mkdir -p "$DEST"; echo "已创建目标目录"; }
 

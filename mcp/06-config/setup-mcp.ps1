@@ -3,7 +3,7 @@
     把本目录的 MCP 配置合并进 ~/.claude.json。
 
 .DESCRIPTION
-    读取 08-mcp/config/mcp-servers.global.json，将其 mcpServers 合并到
+    读取 mcp/06-config/mcp-servers.global.json，将其 mcpServers 合并到
     目标配置文件（默认 ~/.claude.json）的顶层 mcpServers 字段。
 
     - 默认只合并、不删除已有条目；同名 server 会以本仓库版本为准。
@@ -30,7 +30,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$srcFile = Join-Path $PSScriptRoot 'config\mcp-servers.global.json'
+$srcFile = Join-Path $PSScriptRoot 'mcp-servers.global.json'
 
 if (-not (Test-Path $srcFile)) { throw "找不到源配置: $srcFile" }
 if (-not (Test-Path $ConfigPath)) { throw "找不到目标配置: $ConfigPath" }
