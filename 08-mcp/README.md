@@ -9,6 +9,7 @@
 ```
 08-mcp/
 ├── README.md                      ← 本文件
+├── RECOMMENDED.md                 ← ⭐ MCP 推荐清单（值得加装的高效率 MCP）
 ├── setup-mcp.ps1                  ← 合并 MCP 配置到 ~/.claude.json 的脚本
 ├── config/
 │   ├── mcp-servers.global.json    ← 全局 MCP 配置（9 个 server）
@@ -138,6 +139,18 @@ npm install
 | `tools.bat` | 工具总入口 |
 
 详见 [stm32-tools/README.md](stm32-tools/README.md) 与 [stm32-tools/CLOSED_LOOP.md](stm32-tools/CLOSED_LOOP.md)。
+
+---
+
+## ⭐ 值得加装的 MCP
+
+见 **[RECOMMENDED.md](RECOMMENDED.md)** —— 基于官方仓库与社区大全调研，挑出对
+「嵌入式 STM32 + EDA + CAD + Agent 工作流」最有价值的 MCP，含：
+
+- 三个效率杠杆（省 token / 补上下文 / 能动手）
+- 官方服务器状态（含**已归档**警告）
+- 建议的加装顺序
+- 安全红线
 
 ---
 

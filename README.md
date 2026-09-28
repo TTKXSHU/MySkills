@@ -163,6 +163,7 @@ MySkills/
 ```
 08-mcp/
 ├── README.md                      MCP 完整说明
+├── RECOMMENDED.md                 ⭐ MCP 推荐清单（值得加装的高效率 MCP）
 ├── setup-mcp.ps1                  合并配置的预览脚本（含自动备份）
 ├── config/
 │   ├── mcp-servers.global.json    全局 9 个 server
@@ -183,6 +184,11 @@ MySkills/
 | `easyeda-mcp-pro` | 立创EDA（PCB/原理图） | 开发 |
 | `stm32-tools` | **自制**：编译/烧录/串口/寄存器 | 开发 |
 | `stm32-data` | STM32 寄存器查询 | 开发 |
+
+### ⭐ 想要更多 MCP？
+
+见 **[08-mcp/RECOMMENDED.md](08-mcp/RECOMMENDED.md)** —— 基于官方仓库与社区大全调研的推荐清单，
+含官方服务器状态（有**已归档**项）、三个效率杠杆、建议加装顺序。
 
 ### ⚠️ MCP 部分的安全说明
 

@@ -108,3 +108,5 @@
 | stm32-data | STM32 寄存器查询 | 同上配置 |
 
 完整说明见 [08-mcp/README.md](08-mcp/README.md)。
+
+**⭐ 推荐加装的 MCP** 见 [08-mcp/RECOMMENDED.md](08-mcp/RECOMMENDED.md)。
