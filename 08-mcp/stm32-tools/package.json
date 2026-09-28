@@ -1,0 +1,16 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "通用STM32调试工具套件，可在任何STM32项目中使用。",
+  "main": "mcp-server.js",
+  "scripts": {
+    "test": "node test/closed-loop.test.js && node test/mcp-smoke.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  }
+}

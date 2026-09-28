@@ -1,0 +1,55 @@
+{
+  "_comment": "从 ~/.claude.json 的 mcpServers 字段导出。可直接合并进你自己的 ~/.claude.json。",
+  "_note": "此文件不含任何密钥。若某 server 需要 API key，请把 env 值设为环境变量引用，不要写死在文件里。",
+
+  "mcpServers": {
+    "filesystem": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-filesystem"]
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@upstash/context7-mcp"]
+    },
+    "sequential-thinking": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "fetch": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    },
+    "memory": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-memory"]
+    },
+    "github": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-github"]
+    },
+    "easyeda-mcp-pro": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "easyeda-mcp-pro@latest"],
+      "env": {
+        "TOOL_PROFILE": "pro"
+      }
+    },
+    "stm32-tools": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": ["/c", "node", "<YOUR_HOME>/.claude/tools/mcp-server.js"],
+      "env": {}
+    },
+    "stm32-data": {
+      "type": "stdio",
+      "command": "stm32-data-mcp",
+      "args": [],
+      "env": {
+        "STM32_DATA_DIR": "<YOUR_DRIVE>:/stm32-data-generated"
+      }
+    }
+  }
+}

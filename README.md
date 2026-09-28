@@ -2,7 +2,8 @@
 
 [![Private](https://img.shields.io/badge/repo-private-red)](#)
 [![Skills](https://img.shields.io/badge/skills-36-blue)](#-技能总览)
-[![Size](https://img.shields.io/badge/size-8.8MB-lightgrey)](#)
+[![MCP](https://img.shields.io/badge/mcp%20servers-9-purple)](#-mcp-服务器-08-mcp)
+[![Size](https://img.shields.io/badge/size-9.0MB-lightgrey)](#)
 
 > 个人 AI Agent 技能（Skills）集中仓库。兼容 **Claude Code / cc-switch / Codex / Gemini CLI / PI-Desktop** 等支持 `SKILL.md` 规范的 Agent。
 
@@ -10,9 +11,9 @@
 
 ## 📖 这个仓库是什么
 
-存放我本人使用和整理的 **36 个 Agent Skill**。每个 skill 是一个独立目录，内含一份 `SKILL.md`（技能定义，YAML front matter + Markdown 指令），部分 skill 还带有 `scripts/`、`references/` 等辅助文件。
+存放我本人使用和整理的 **36 个 Agent Skill** 与 **9 个 MCP 服务器配置**。每个 skill 是一个独立目录，内含一份 `SKILL.md`（技能定义，YAML front matter + Markdown 指令），部分 skill 还带有 `scripts/`、`references/` 等辅助文件。
 
-**目录分类规则**：按**用途领域**分成 7 个大类，类名前缀 `01-` ~ `07-` 保证排序稳定、方便查找。
+**目录分类规则**：按**用途领域**分成 8 个大类（7 类 skill + 1 类 MCP），类名前缀 `01-` ~ `08-` 保证排序稳定、方便查找。
 
 ---
 
@@ -62,12 +63,18 @@ MySkills/
 │   ├── ponytail-help/
 │   ├── ponytail-review/
 │   └── superchat-automation/
-└── 07-system/                       🧭 路由 / 系统（2）
-    ├── local-skill-router/  (1 extra)
-    └── using-superpowers/  (1 extra)
+├── 07-system/                       🧭 路由 / 系统（2）
+│   ├── local-skill-router/  (1 extra)
+│   └── using-superpowers/  (1 extra)
+└── 08-mcp/                          🔌 MCP 服务器配置（9 个）
+    ├── config/
+    │   ├── mcp-servers.global.json
+    │   └── mcp-servers.projects.json
+    └── stm32-tools/
+        └── mcp-server.js 等 24 个文件
 ```
 
-**统计**：7 个分类 · 36 个 skill · 420 个文件 · 约 8.8 MB
+**统计**：8 个分类 · 36 个 skill · 9 个 MCP server · 453 个文件 · 约 9.0 MB
 
 ---
 
@@ -143,6 +150,46 @@ MySkills/
 |---|---|---|
 | [`local-skill-router`](07-system/local-skill-router/) | 7 KB | 本地 skill 路由入口：先读索引表判断该用哪个 skill |
 | [`using-superpowers`](07-system/using-superpowers/) | 7 KB | 会话启动规则：任何响应前先判断是否需调用 skill |
+---
+
+## 🔌 MCP 服务器（08-mcp）
+
+除 skill 外，本仓库还收录我使用的 **9 个 MCP（Model Context Protocol）服务器配置**，以及一个自制的 STM32 调试工具套件。
+
+详见 **[08-mcp/README.md](08-mcp/README.md)**
+
+### 配置内容
+
+```
+08-mcp/
+├── README.md                      MCP 完整说明
+├── setup-mcp.ps1                  合并配置的预览脚本（含自动备份）
+├── config/
+│   ├── mcp-servers.global.json    全局 9 个 server
+│   └── mcp-servers.projects.json  项目级示例
+└── stm32-tools/                   自制 STM32 调试套件（24 个文件）
+```
+
+### MCP 清单
+
+| Server | 作用 | 类型 |
+|---|---|---|
+| `filesystem` | 文件系统读写 | 通用 |
+| `fetch` | 网页抓取转 Markdown | 通用 |
+| `memory` | 跨会话持久记忆 | 通用 |
+| `sequential-thinking` | 分步推理辅助 | 通用 |
+| `context7` | 查询库/框架最新文档 | 通用 |
+| `github` | GitHub 仓库操作 | 开发 |
+| `easyeda-mcp-pro` | 立创EDA（PCB/原理图） | 开发 |
+| `stm32-tools` | **自制**：编译/烧录/串口/寄存器 | 开发 |
+| `stm32-data` | STM32 寄存器查询 | 开发 |
+
+### ⚠️ MCP 部分的安全说明
+
+- ✅ 已脱敏：**无任何 API key / token / 密码**（已扫描确认）
+- ✅ 绝对路径 → 占位符 `<YOUR_HOME>` / `<YOUR_DRIVE>`
+- ✅ 已排除 `node_modules`（依赖自行 `npm install`）
+- ❌ **切勿提交 `~/.claude/settings.json`** —— 该文件含真实 `ANTHROPIC_AUTH_TOKEN`
 
 ---
 

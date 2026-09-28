@@ -1,0 +1,27 @@
+{
+  "_comment": "项目级 MCP 配置示例。放在 ~/.claude.json 的 projects.<项目路径>.mcpServers 下，或项目内的 .mcp.json。",
+  "_note": "我在两个项目里分别配了不同的 browser MCP，这里作为示例保留。路径请替换为你自己的。",
+
+  "projects": {
+    "<PROJECT_PATH_A>": {
+      "mcpServers": {
+        "browser": {
+          "type": "stdio",
+          "command": "npx",
+          "args": ["-y", "hyper-mcp-browser"],
+          "env": {}
+        }
+      }
+    },
+    "<PROJECT_PATH_B>": {
+      "mcpServers": {
+        "browser": {
+          "type": "stdio",
+          "command": "cmd",
+          "args": ["/c", "npx", "-y", "@anthropic/mcp-server-playwright"],
+          "env": {}
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
 > 扁平化索引，按**技能名**字母序排列，方便快速定位。
 > 完整分类说明见 [README.md](README.md)
 
-**总计：36 个 skill · 7 个分类 · 约 8.8 MB**
+**总计：36 个 skill · 9 个 MCP server · 8 个分类 · 约 9.0 MB**
 
 ---
 
@@ -18,6 +18,7 @@
 | [05-knowledge](05-knowledge/) 🎓 | 3 | find-skills, six-step-learning-map, writing-skills |
 | [06-automation](06-automation/) 🤖 | 8 | googlesuper-automation, ponytail, ponytail-audit, ponytail-debt, ponytail-gain, ponytail-help, ponytail-review, superchat-automation |
 | [07-system](07-system/) 🧭 | 2 | local-skill-router, using-superpowers |
+| [08-mcp](08-mcp/) 🔌 | 9 个 MCP | filesystem, fetch, memory, sequential-thinking, context7, github, easyeda-mcp-pro, stm32-tools, stm32-data |
 
 ---
 
@@ -88,3 +89,22 @@
 | 精简过度设计的代码 | ponytail, ponytail-review, ponytail-audit | 06-automation |
 | 自动化 Google / Superchat | googlesuper-automation, superchat-automation | 06-automation |
 | 判断该用哪个 skill | local-skill-router, using-superpowers | 07-system |
+| 配置 MCP 服务器 | 见 [08-mcp/README.md](08-mcp/README.md) | 08-mcp |
+
+---
+
+## MCP 服务器索引（08-mcp）
+
+| MCP Server | 作用 | 路径 |
+|---|---|---|
+| filesystem | 文件系统读写 | [`08-mcp/config/mcp-servers.global.json`](08-mcp/config/mcp-servers.global.json) |
+| fetch | 网页抓取转 Markdown | 同上 |
+| memory | 跨会话持久记忆 | 同上 |
+| sequential-thinking | 分步推理辅助 | 同上 |
+| context7 | 查询库/框架最新文档 | 同上 |
+| github | GitHub 仓库操作 | 同上 |
+| easyeda-mcp-pro | 立创EDA（PCB/原理图） | 同上 |
+| stm32-tools | 自制 STM32 调试套件 | [`08-mcp/stm32-tools/`](08-mcp/stm32-tools/) |
+| stm32-data | STM32 寄存器查询 | 同上配置 |
+
+完整说明见 [08-mcp/README.md](08-mcp/README.md)。

@@ -46,3 +46,9 @@ token.json
 *.tmp
 *.bak
 .cache/
+
+# ---- Claude 凭据文件（务必排除，含真实 API token）----
+.claude/settings.json
+.claude.json
+settings.json
+!08-mcp/**/settings.json
